@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, AfterViewInit, HostListener, computed, signal } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit, HostListener, computed, signal,OnDestroy,ViewChildren, QueryList, } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 // importe SEM .local para funcionar em local e produção via fileReplacements
@@ -23,6 +23,13 @@ export class LandingComponent implements AfterViewInit {
   readonly empresa = 'Master Vidros';
   readonly whatsapp = environment.whatsappNumber;
   readonly mensagem = environment.whatsappMsg;
+
+  isScrolled = false;
+
+@HostListener('window:scroll')
+onScroll() {
+  this.isScrolled = window.scrollY > 8;
+}
 
 
 
@@ -79,7 +86,7 @@ imagens = signal<string[]>([
   'https://unsplash.com/photos/stM6gPNhS68/download?force=true&w=1600',
 
   // Escritórios / divisórias
- 
+
   'https://unsplash.com/photos/GkuZdv11Gfo/download?force=true&w=1600',
 
   // Fachadas / vitrines
@@ -160,7 +167,7 @@ imagens = signal<string[]>([
 
   // depoimentos
 
-  
+
 
 
 

@@ -1,5 +1,5 @@
 export const environment = {
-production: true,
-whatsappNumber: '85999999999',
-whatsappMsg: 'Olá! Vim pelo site e quero um orçamento.',
+  production: true,
+  whatsappNumber: '85984200299',
+  whatsappMsg: 'Olá! gostaria de mais informações sobre seus serviços. Poderia me ajudar?',
 };

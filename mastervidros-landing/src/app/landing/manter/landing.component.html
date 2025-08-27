@@ -1,32 +1,34 @@
-<header class="navbar navbar-expand-lg sticky-top bg-white shadow-sm">
+<header class="navbar navbar-expand-lg sticky-top bg-white shadow-sm nav-anim"
+        [class.navbar--scrolled]="isScrolled">
   <div class="container">
     <a class="navbar-brand d-flex align-items-center" href="#">
-      <img src="assets/logo.png" alt="Master Vidros" class="brand-logo" width="auto" height="100" />
+      <img src="assets/logo.png" alt="Master Vidros" class="brand-logo" height="56" />
     </a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+    <button class="navbar-toggler toggler-anim" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <nav id="nav" class="collapse navbar-collapse">
       <ul class="navbar-nav ms-auto gap-2 align-items-lg-center">
         <li class="nav-item"><a class="nav-link" href="#servicos">Serviços</a></li>
         <li class="nav-item"><a class="nav-link" href="#galeria">Galeria</a></li>
         <li class="nav-item"><a class="nav-link" href="#depoimentos">Depoimentos</a></li>
         <li class="nav-item">
-          <a class="btn btn-primary d-inline-flex align-items-center gap-2" [href]="whatsappUrl()" target="_blank"
-            rel="noopener">
+          <a class="btn btn-primary d-inline-flex align-items-center gap-2"
+             [href]="whatsappUrl()" target="_blank" rel="noopener">
             <i class="bi bi-whatsapp" aria-hidden="true"></i>
             <span>Faça um orçamento</span>
           </a>
         </li>
-        </ul>
+      </ul>
     </nav>
   </div>
 </header>
 
 <section class="hero hero--dark d-flex align-items-center">
   <div class="container text-center text-white">
-    
+
        <!-- Logo da empresa no hero -->
     <!-- <img src="../../../assets/logo-nome.png" alt="Master Vidros" class="hero__logo a-fade-down" height="60" /> -->
 
@@ -39,7 +41,7 @@
       Box, fachadas, espelhos e muito mais — projetos de alta qualidade com instalação profissional.
     </p>
 
-   
+
    <a class="btn btn-outline-light btn-lg d-inline-flex align-items-center gap-2 a-fade-up a-delay-2"
    href="#galeria" rel="noopener">
   <span >Confira nossos produtos</span>
@@ -53,13 +55,18 @@
 <section id="servicos" class="py-5 bg-light">
   <div class="container">
     <h2 class="text-center mb-4">Serviços</h2>
-    <p class="text-center text-muted mb-5">Selecionamos materiais premium e seguimos normas técnicas para garantir segurança e acabamento impecável.</p>
-    <div class="row g-4">
-      <div class="col-12 col-md-6 col-lg-4" *ngFor="let s of servicos()">
-        <div class="card h-100 shadow-sm border-0">
+    <p class="text-center text-muted mb-5">
+      Selecionamos materiais premium e seguimos normas técnicas para garantir segurança e acabamento impecável.
+    </p>
+
+    <div class="row g-4 srv-grid">
+      <div class="col-12 col-md-6 col-lg-4" *ngFor="let s of servicos(); let i = index">
+        <!-- add: srv-card + a-reveal + stagger -->
+        <div #srvCard class="card h-100 shadow-sm border-0 srv-card a-reveal" [ngClass]="'a-delay-'+(i%3)">
           <div class="card-body p-4">
-            <div class="icon-wrap mb-3">
-              <i [class]="s.icon"></i>
+            <!-- add: srv-icon -->
+            <div class="icon-wrap srv-icon mb-3">
+              <i [class]="s.icon" aria-hidden="true"></i>
             </div>
             <h3 class="h5">{{ s.titulo }}</h3>
             <p class="text-muted mb-0">{{ s.descricao }}</p>
@@ -107,7 +114,7 @@
         </div>
       </div>
 
-     
+
 
       <!-- Botão: Ver galeria -->
       <div class="text-center mt-4">
