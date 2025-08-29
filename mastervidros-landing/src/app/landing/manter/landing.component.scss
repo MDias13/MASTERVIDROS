@@ -3,7 +3,13 @@
 @import '../animations/header.scss';
 @import '../animations/services.scss';
 @import '../animations/depoimentos.scss';
+@import '../animations/sobre.scss';
+@import '../animations/parceiros.scss';
 
+
+h2 {
+  font-family: Georgia, 'Times New Roman', Times, serif
+}
 
 
 a { color: #16529E; }
@@ -391,9 +397,138 @@ p  { font-size: clamp(14px, 1.5vw, 18px); }
   border-color: rgba(22,82,158,.14);
 }
 
+// Botao serviços
+
+/* Botão “outline” com a paleta do template */
+.btn-outline-brand {
+  color: #16529E; /* texto/ícone */
+  border: 1px solid rgba(22, 82, 158, .55);
+  background-color: transparent;
+  transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease, color .15s ease, border-color .15s ease;
+}
+
+.btn-outline-brand:hover {
+  color: #fff;
+  background-color: #16529E;             /* fill brand */
+  border-color: #16529E;
+  box-shadow: 0 8px 18px rgba(22, 82, 158, .25);
+  transform: translateY(-1px);
+}
+
+.btn-outline-brand:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(22, 82, 158, .20);
+}
+
+.btn-outline-brand:focus-visible {
+  outline: 2px solid #69AAF9;            /* anel de foco na cor clara da marca */
+  outline-offset: 2px;
+}
+
+/* Tamanho/ajuste do ícone ao lado do texto */
+.btn-outline-brand i {
+  font-size: 1rem;
+  line-height: 1;
+  transform: translateY(1px); /* alinha verticalmente com o texto */
+}
 
 
 
+
+/* ===== Parceiros (carousel infinito) ===== */
+.partners {
+  --brand: #16529E;
+  --brand-200: #69AAF9;
+}
+
+.partners__viewport {
+  overflow: hidden;
+  position: relative;
+  /* “fade” nas bordas (suporte amplo) */
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
+}
+
+.partners__track {
+  --speed: 38s;  /* sobrescrito via style binding */
+  --gap: 28px;
+
+  display: flex;
+  gap: var(--gap);
+  width: max-content;            /* largura automática ao conteúdo */
+  will-change: transform;
+  animation: partners-scroll var(--speed) linear infinite;
+  align-items: center;
+  padding: 6px 0;
+}
+
+@keyframes partners-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); } /* metade pois a lista foi duplicada */
+}
+
+.partners__item {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+}
+
+.partners__logo {
+  height: 40px;          /* ajuste de tamanho padrão */
+  width: auto;
+  filter: grayscale(1) opacity(.85);
+  transition: filter .2s ease, transform .2s ease;
+}
+
+.partners__logo:hover {
+  filter: grayscale(0) opacity(1) drop-shadow(0 2px 6px rgba(22,82,158,.15));
+  transform: translateY(-1px);
+}
+
+/* Pausar animação ao focar/hover (acessibilidade e controle) */
+.partners__viewport:hover .partners__track,
+.partners__viewport:focus-within .partners__track {
+  animation-play-state: paused;
+}
+
+/* Responsivo: logos maiores em telas médias/grandes */
+@media (min-width: 576px)  { .partners__logo { height: 46px; } }
+@media (min-width: 992px)  { .partners__logo { height: 52px; } }
+
+/* Respeita redução de movimento */
+@media (prefers-reduced-motion: reduce) {
+  .partners__track { animation: none !important; }
+}
+
+
+
+// sobre badges
+/* --- MOBILE: 3 colunas lado a lado --- */
+@media (max-width: 575.98px) {
+  .about__stats {
+    display: grid;                           /* vira grid no mobile */
+    grid-template-columns: repeat(3, 1fr);   /* 3 colunas iguais */
+    gap: 8px;                                /* um pouco menos de gap pra caber bem */
+  }
+
+  .about__badge {
+    min-width: 0;            /* deixa o card encolher para caber */
+    padding: 10px 8px;       /* padding menor no mobile */
+    text-align: center;
+  }
+
+  .about__kpi {
+    font-size: 1.05rem;      /* reduz um tiquinho no mobile */
+    line-height: 1.1;
+  }
+
+  .about__badge small {
+    display: block;
+    font-size: .74rem;       /* legenda menor pra caber */
+    line-height: 1.1;
+    white-space: normal;     /* deixa quebrar linha se precisar */
+  }
+}
 
 
 
