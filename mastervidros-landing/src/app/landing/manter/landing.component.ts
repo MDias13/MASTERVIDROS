@@ -5,6 +5,7 @@ import { DeferRenderDirective } from '../../shared/defer-render.directive';
 // importe SEM .local para funcionar em local e produção via fileReplacements
 import { environment } from '../../../environments/environment';
 import { LightboxComponent } from '../../shared/lightbox-servicos/lightbox.component';
+import { FooterComponent } from "../footer/footer.component";
 
 interface Servico {
   icon: string;
@@ -17,7 +18,7 @@ interface Servico {
 @Component({
   selector: 'app-landing',
   standalone: true,
-  imports: [CommonModule, RouterModule,DeferRenderDirective,LightboxComponent],
+  imports: [CommonModule, RouterModule, DeferRenderDirective, LightboxComponent, FooterComponent],
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.scss']
 })
@@ -69,46 +70,143 @@ depoimentos = signal<Depo[]>([
 ]);
   // catálogo de serviços
 servicos = signal<Servico[]>([
+  // ===== seus 3 novos =====
   {
     icon: 'bi bi-columns-gap',
     titulo: 'Cortinas de Vidro (Sacadas)',
     descricao:
-      'Envidraçamento que integra ambientes e protege contra vento e chuva. Perfis discretos, sistema com ou sem roldanas e vidro temperado 8/10 mm, com travas de segurança e ventilação controlada.',
+      'Envidraçamento que integra ambientes e protege do vento e da chuva. Perfis discretos, sistema com ou sem roldanas e vidro temperado 8/10 mm; travas de segurança e ventilação controlada.',
     imgs: [
-      'assets/servicos/cortinas/01.jpg',
-      'assets/servicos/cortinas/02.jpg',
-      'assets/servicos/cortinas/03.jpg',
-    ]
+      'assets/servicos/cortinas/FOTO-1.jpeg',
+      'assets/servicos/cortinas/FOTO-2.jpeg',
+      'assets/servicos/cortinas/FOTO-3.jpeg',
+    ],
   },
   {
     icon: 'bi bi-tools',
     titulo: 'Manutenção — Cortinas, Janelas e Box',
     descricao:
-      'Troca de roldanas, manutenção e regulagem de cortinas de vidro, regulagem de portas/janelas, vedação contra vazamentos e substituição de vidros trincados e muito mais. Atendimento personalizado e garantia de serviço.',
+      'Troca de roldanas, manutenção e regulagem de cortinas de vidro, portas e janelas, vedação contra vazamentos e substituição de vidros trincados. Atendimento personalizado e garantia de serviço.',
     imgs: [
-      'assets/servicos/manutencao/01.jpg',
+      'assets/servicos/cortinas/01.jpg',
       'assets/servicos/manutencao/02.jpg',
       'assets/servicos/manutencao/03.jpg',
-    ]
+    ],
   },
   {
     icon: 'bi bi-box-seam',
     titulo: 'Vidros para Prateleiras e Fechamentos',
     descricao:
-      'Prateleiras sob medida em vidro temperado ou comum com lapidação, bizote e jateamemto. Suportes discretos, fechamento de nichos e vitrines com segurança e excelente acabamento.',
+      'Prateleiras sob medida em vidro temperado ou comum, com lapidação, bisotê e jateamento. Suportes discretos, fechamento de nichos e vitrines com segurança e excelente acabamento.',
     imgs: [
-      'assets/servicos/prateleiras/01.jpg',
-      'assets/servicos/prateleiras/02.jpg',
-      'assets/servicos/prateleiras/03.jpg',
-    ]
-  }
+      'assets/servicos/prateleiras/FOTO (4).jpeg',
+      'assets/servicos/prateleiras/FOTO (5).jpeg',
+      'assets/servicos/prateleiras/FOTO (6).jpeg',
+      'assets/servicos/prateleiras/FOTO (8).jpeg',
+      'assets/servicos/prateleiras/FOTO (9).jpeg',
+    ],
+  },
+
+  // ===== 6 da imagem (mantidos) =====
+  {
+    icon: 'bi bi-door-closed',
+    titulo: 'Box para Banheiro',
+    descricao:
+      'Box sob medida em vidro temperado (8/10mm), ferragens premium e vedação perfeita.',
+    imgs: [
+      'assets/servicos/box/1.jpeg',
+      'assets/servicos/box/2.jpeg'
+
+    ],
+  },
+  {
+    icon: 'bi bi-aspect-ratio',
+    titulo: 'Espelhos Decorativos',
+    descricao:
+      'Espelhos lapidados, bisotê e antiembaçantes para hall, salas e banheiros.',
+    imgs: [
+      'assets/servicos/espelhos/FOTO (1).jpeg',
+      'assets/servicos/espelhos/FOTO (2).jpeg',
+      'assets/servicos/espelhos/FOTO (3).jpeg',
+      'assets/servicos/espelhos/FOTO (4).jpeg',
+      'assets/servicos/espelhos/FOTO (5).jpeg',
+      'assets/servicos/espelhos/FOTO (6).jpeg'
+    ],
+  },
+  {
+    icon: 'bi bi-building',
+    titulo: 'Fachadas em Vidro',
+    descricao:
+      'Pele de vidro, guarda-corpos e envidraçamento de sacadas com segurança e elegância.',
+    imgs: [
+      'assets/servicos/fachadas/FOTO (4).jpeg',
+      'assets/servicos/fachadas/FOTO (1).jpeg',
+      'assets/servicos/fachadas/FOTO (2).jpeg',
+      'assets/servicos/fachadas/FOTO (3).jpeg'
+
+    ],
+  },
+  {
+    icon: 'bi bi-border',
+    titulo: 'Guarda-corpo',
+    descricao:
+      'Proteção com design: aço inox, alumínio e vidro temperado/laminado conforme norma.',
+    imgs: [
+      'assets/servicos/corrimao/FOTO (1).jpeg',
+      'assets/servicos/corrimao/FOTO (2).jpeg'
+    ],
+  },
+  {
+    icon: 'bi bi-grid-3x3-gap',
+    titulo: 'Portas e Janelas',
+    descricao:
+      'Ambientes integrados com portas de correr, pivotantes e divisórias em vidro.',
+    imgs: [
+      'assets/servicos/portas e janelas/FOTO (1).jpeg',
+      'assets/servicos/portas e janelas/FOTO (2).jpeg',
+      'assets/servicos/portas e janelas/FOTO (3).jpeg',
+      'assets/servicos/portas e janelas/FOTO (4).jpeg',
+      'assets/servicos/portas e janelas/FOTO (5).jpeg',
+      'assets/servicos/portas e janelas/FOTO (6).jpeg',
+      'assets/servicos/portas e janelas/FOTO (7).jpeg',
+      'assets/servicos/portas e janelas/FOTO (8).jpeg',
+      'assets/servicos/portas e janelas/FOTO (9).jpeg',
+      'assets/servicos/portas e janelas/FOTO (10).jpeg',
+      'assets/servicos/portas e janelas/FOTO (11).jpeg'
+    ],
+  },
+  {
+    icon: 'bi bi-brightness-high',
+    titulo: 'Coberturas',
+    descricao:
+      'Coberturas em vidro ou policarbonato, estrutura leve e alta durabilidade.',
+    imgs: [
+      'assets/servicos/coberturas/FOTO (1).jpeg',
+      'assets/servicos/coberturas/FOTO (2).jpeg',
+      'assets/servicos/coberturas/FOTO (3).jpeg',
+    ],
+  },
+  {
+  icon: 'bi bi-wrench', // ou 'bi bi-gear', se preferir
+  titulo: 'Serviços em Aço Inox e Metalon',
+  descricao:
+    'Estruturas em metalon, Solda TIG/MIG, cortes precisos e acabamentos escovado ou polido. Projeto sob medida com montagem e fixação profissional.',
+  imgs: [
+    'assets/servicos/aco/FOTO (1).jpeg',
+    'assets/servicos/aco/FOTO (2).jpeg',
+    'assets/servicos/aco/FOTO (3).jpeg'
+  ],
+},
+
 ]);
+
 
 parceiros = signal<Parceiro[]>([
   { nome: 'Aço Cearense', logo: 'https://www.grupoacocearense.com.br/wp-content/uploads/2018/10/gac.png', url: 'https://www.grupoacocearense.com.br' },
   { nome: 'Loja Produção', logo: 'https://logo.clearbit.com/lojaproducao.com?size=256',       url: 'https://lojaproducao.com' },
   { nome: 'Gran Marquise', logo: 'https://hotelgranmarquise.com/wp-content/uploads/2023/07/hotel-gran-marquise-logotipo.png',     url: 'https://www.granmarquise.com.br' },
   { nome: 'Casa Garcia (Fortaleza)', logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0sqfL79vUNOlSk3PVOc3YgeJ7t_HnYBFbaw&s', url: 'https://casagarciafortaleza.com.br' },
+  { nome: 'Postos rede Ceará', logo: 'https://rededepostosceara.com.br/wp-content/uploads/2024/07/logo-nova-rede-ceara.png', url: '' },
 ]);
 
 /** Velocidade do carrossel (quanto menor, mais rápido). Ex.: '40s', '28s' */
